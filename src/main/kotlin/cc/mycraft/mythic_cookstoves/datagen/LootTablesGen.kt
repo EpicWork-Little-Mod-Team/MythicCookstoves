@@ -35,6 +35,7 @@ class LootTablesGen(pGenerator: DataGenerator) : LootTableProvider(pGenerator) {
     private class BlockLoots : BlockLoot() {
         override fun addTables() {
             dropSelf(ModBlocks.COOKSTOVE)
+            dropSelf(ModBlocks.SHALLOW_PAN)
             dropSelf(ModBlocks.SAUCEPAN)
             dropSelf(ModBlocks.STONE_MORTAR)
             dropSelf(ModBlocks.OAK_PESTLE)

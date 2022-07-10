@@ -20,12 +20,14 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
     override fun registerStatesAndModels() {
         // models
         val cookstoveModel = getObjBlockModelFromBooleanProperty(ModBlocks.COOKSTOVE, CookstoveBlock.LIT)
+        val shallowPanModel = getObjBlockModel(ModBlocks.SHALLOW_PAN)
         val saucepanModel = getObjBlockModel(ModBlocks.SAUCEPAN)
         val stoneMortarModel = mortarModel(ModBlocks.STONE_MORTAR, mcLoc("block/stone"))
         val oakPestleModel = pestleModel(ModBlocks.OAK_PESTLE, mcLoc("block/oak_log"))
         val strawberryBushModel = getObjBlockModelFromProperty(ModBlocks.STRAWBERRY_BUSH, StrawberryBushBlock.AGE)
         // blockstates
         horizontalBlock(ModBlocks.COOKSTOVE) { cookstoveModel[it.getValue(CookstoveBlock.LIT)] }
+        horizontalBlock(ModBlocks.SHALLOW_PAN, shallowPanModel)
         horizontalBlock(ModBlocks.SAUCEPAN, saucepanModel)
         horizontalBlock(ModBlocks.STONE_MORTAR, stoneMortarModel)
         simpleBlock(ModBlocks.OAK_PESTLE, oakPestleModel)

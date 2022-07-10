@@ -1,5 +1,5 @@
 {
-  "parent": "mythic_cookstoves:block/saucepan",
+  "parent": "mythic_cookstoves:block/shallow_pan",
   "display": {
     "thirdperson_righthand": {
       "rotation": [57, 0, 0],

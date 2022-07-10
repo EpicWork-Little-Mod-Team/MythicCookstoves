@@ -11,6 +11,7 @@ class BlockTagsGen(pGenerator: DataGenerator, modId: String, existingFileHelper:
     override fun addTags() {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(ModBlocks.COOKSTOVE)
+            .add(ModBlocks.SHALLOW_PAN)
             .add(ModBlocks.SAUCEPAN)
             .add(ModBlocks.STONE_MORTAR)
     }

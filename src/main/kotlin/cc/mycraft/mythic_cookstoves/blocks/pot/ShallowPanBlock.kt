@@ -1,33 +1,15 @@
-package cc.mycraft.mythic_cookstoves.blocks
+package cc.mycraft.mythic_cookstoves.blocks.pot
 
 import net.minecraft.core.BlockPos
-import net.minecraft.core.Direction
-import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
-import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.state.BlockState
-import net.minecraft.world.level.block.state.StateDefinition
-import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.material.Material
 import net.minecraft.world.level.material.MaterialColor
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.Shapes
 import net.minecraft.world.phys.shapes.VoxelShape
 
-class SaucepanBlock : Block(Properties.of(Material.HEAVY_METAL, MaterialColor.METAL).noOcclusion()) {
-    init {
-        registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH))
-    }
-
-    override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block, BlockState>) {
-        super.createBlockStateDefinition(pBuilder)
-        pBuilder.add(FACING)
-    }
-
-    override fun getStateForPlacement(pContext: BlockPlaceContext): BlockState? {
-        return defaultBlockState().setValue(FACING, pContext.horizontalDirection.opposite)
-    }
-
+class ShallowPanBlock : AbstractPotBlock(Properties.of(Material.HEAVY_METAL, MaterialColor.METAL).noOcclusion()) {
     @Deprecated("use BlockState's getShape instead")
     override fun getShape(
         pState: BlockState,
@@ -39,7 +21,6 @@ class SaucepanBlock : Block(Properties.of(Material.HEAVY_METAL, MaterialColor.ME
     }
 
     companion object {
-        val FACING = BlockStateProperties.HORIZONTAL_FACING
         private val shape: VoxelShape
 
         init {
