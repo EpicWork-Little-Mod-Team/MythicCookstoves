@@ -1,6 +1,7 @@
 package cc.mycraft.mythic_cookstoves.items
 
 import cc.mycraft.mythic_cookstoves.MythicCookstoves
+import cc.mycraft.mythic_cookstoves.items.food.ChiliItem
 import cc.mycraft.mythic_cookstoves.items.food.StrawberryItem
 import cc.mycraft.mythic_cookstoves.items.kitchen.*
 import net.minecraftforge.registries.DeferredRegister
@@ -19,4 +20,5 @@ object ModItems {
 
     // food
     val STRAWBERRY by REGISTRY.registerObject("strawberry") { StrawberryItem() }
+    val CHILI by REGISTRY.registerObject("chili") { ChiliItem() }
 }

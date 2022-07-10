@@ -4,4 +4,5 @@ import net.minecraft.world.food.FoodProperties
 
 object ModFoods {
     val STRAWBERRY = FoodProperties.Builder().build()
+    val CHILI = FoodProperties.Builder().build()
 }

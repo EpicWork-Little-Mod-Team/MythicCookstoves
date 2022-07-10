@@ -3,7 +3,7 @@ package cc.mycraft.mythic_cookstoves.datagen
 import cc.mycraft.mythic_cookstoves.MythicCookstoves
 import cc.mycraft.mythic_cookstoves.blocks.CookstoveBlock
 import cc.mycraft.mythic_cookstoves.blocks.ModBlocks
-import cc.mycraft.mythic_cookstoves.blocks.StrawberryBushBlock
+import cc.mycraft.mythic_cookstoves.blocks.plant.Age3BushBlock
 import net.minecraft.data.DataGenerator
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.Block
@@ -24,7 +24,8 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
         val saucepanModel = getObjBlockModel(ModBlocks.SAUCEPAN)
         val stoneMortarModel = mortarModel(ModBlocks.STONE_MORTAR, mcLoc("block/stone"))
         val oakPestleModel = pestleModel(ModBlocks.OAK_PESTLE, mcLoc("block/oak_log"))
-        val strawberryBushModel = getObjBlockModelFromProperty(ModBlocks.STRAWBERRY_BUSH, StrawberryBushBlock.AGE)
+        val strawberryBushModel = getObjBlockModelFromProperty(ModBlocks.STRAWBERRY_BUSH, Age3BushBlock.AGE)
+        val chiliModel = getObjBlockModelFromProperty(ModBlocks.CHILI, Age3BushBlock.AGE)
         // blockstates
         horizontalBlock(ModBlocks.COOKSTOVE) { cookstoveModel[it.getValue(CookstoveBlock.LIT)] }
         horizontalBlock(ModBlocks.SHALLOW_PAN, shallowPanModel)
@@ -32,7 +33,10 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
         horizontalBlock(ModBlocks.STONE_MORTAR, stoneMortarModel)
         simpleBlock(ModBlocks.OAK_PESTLE, oakPestleModel)
         getVariantBuilder(ModBlocks.STRAWBERRY_BUSH).forAllStates {
-            arrayOf(ConfiguredModel(strawberryBushModel[it.getValue(StrawberryBushBlock.AGE).toString()]))
+            arrayOf(ConfiguredModel(strawberryBushModel[it.getValue(Age3BushBlock.AGE).toString()]))
+        }
+        getVariantBuilder(ModBlocks.CHILI).forAllStates {
+            arrayOf(ConfiguredModel(chiliModel[it.getValue(Age3BushBlock.AGE).toString()]))
         }
     }
 

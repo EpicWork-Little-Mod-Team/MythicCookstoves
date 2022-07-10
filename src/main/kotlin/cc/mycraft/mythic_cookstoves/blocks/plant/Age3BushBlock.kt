@@ -1,15 +1,12 @@
-package cc.mycraft.mythic_cookstoves.blocks
+package cc.mycraft.mythic_cookstoves.blocks.plant
 
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.BushBlock
-import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
-import net.minecraft.world.level.material.Material
 
-class StrawberryBushBlock :
-    BushBlock(Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.SWEET_BERRY_BUSH)) {
+abstract class Age3BushBlock(properties: Properties) : BushBlock(properties) {
     init {
         registerDefaultState(stateDefinition.any().setValue(AGE, 0))
     }

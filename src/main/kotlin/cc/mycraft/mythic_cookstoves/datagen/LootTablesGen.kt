@@ -40,6 +40,7 @@ class LootTablesGen(pGenerator: DataGenerator) : LootTableProvider(pGenerator) {
             dropSelf(ModBlocks.STONE_MORTAR)
             dropSelf(ModBlocks.OAK_PESTLE)
             add(ModBlocks.STRAWBERRY_BUSH, noDrop())
+            add(ModBlocks.CHILI, noDrop())
         }
 
         override fun getKnownBlocks(): MutableIterable<Block> {

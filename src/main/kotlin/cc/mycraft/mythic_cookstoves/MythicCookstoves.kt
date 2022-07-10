@@ -2,6 +2,7 @@ package cc.mycraft.mythic_cookstoves
 
 import cc.mycraft.mythic_cookstoves.block_entities.ModBlockEntities
 import cc.mycraft.mythic_cookstoves.block_entities.renderer.MortarRenderer
+import cc.mycraft.mythic_cookstoves.blocks.ICutoutRender
 import cc.mycraft.mythic_cookstoves.blocks.ModBlocks
 import cc.mycraft.mythic_cookstoves.items.ModItems
 import net.minecraft.client.renderer.ItemBlockRenderTypes
@@ -41,7 +42,9 @@ object MythicCookstoves {
     }
 
     private fun onClientSetup(event: FMLClientSetupEvent) {
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.STRAWBERRY_BUSH, RenderType.cutout())
+        ForgeRegistries.BLOCKS.values.filter {
+            it.registryName?.namespace == MOD_ID && it is ICutoutRender
+        }.forEach { ItemBlockRenderTypes.setRenderLayer(it, RenderType.cutout()) }
         LOGGER.info("Mode: Client")
     }
 
