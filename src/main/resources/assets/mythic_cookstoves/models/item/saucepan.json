@@ -1,0 +1,101 @@
+{
+  "parent": "mythic_cookstoves:block/saucepan",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        87,
+        -180,
+        0
+      ],
+      "translation": [
+        0,
+        9.75,
+        5.5
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        87,
+        -180,
+        0
+      ],
+      "translation": [
+        0,
+        9.75,
+        5.5
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        -180,
+        0
+      ],
+      "translation": [
+        0,
+        2.75,
+        -15.25
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        -180,
+        0
+      ],
+      "translation": [
+        5,
+        0,
+        -18
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        3.5,
+        0
+      ]
+    },
+    "gui": {
+      "rotation": [
+        31,
+        -35,
+        0
+      ],
+      "translation": [
+        -0.5,
+        2.25,
+        0
+      ],
+      "scale": [
+        0.8,
+        0.8,
+        0.8
+      ]
+    },
+    "head": {
+      "rotation": [
+        0,
+        -180,
+        0
+      ],
+      "translation": [
+        0,
+        15.25,
+        0
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        -90,
+        -180,
+        0
+      ],
+      "translation": [
+        0,
+        -2.5,
+        -7.25
+      ]
+    }
+  }
+}
