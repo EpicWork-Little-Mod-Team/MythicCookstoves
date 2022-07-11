@@ -5,8 +5,6 @@ import cc.mycraft.mythic_cookstoves.block_entities.MortarBlockEntity
 import cc.mycraft.mythic_cookstoves.blocks.pestle.AbstractPestleBlock
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
-import net.minecraft.core.NonNullList
-import net.minecraft.world.Containers
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
@@ -112,20 +110,17 @@ abstract class AbstractMortarBlock(properties: Properties) :
         } else InteractionResult.PASS
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onRemove(
-        pState: BlockState,
+    override fun playerDestroy(
         pLevel: Level,
+        pPlayer: Player,
         pPos: BlockPos,
-        pNewState: BlockState,
-        pIsMoving: Boolean
+        pState: BlockState,
+        pBlockEntity: BlockEntity?,
+        pTool: ItemStack
     ) {
-        if (!pState.`is`(pNewState.block)) {
-            val blockentity = pLevel.getBlockEntity(pPos)
-            if (blockentity is MortarBlockEntity) {
-                Containers.dropContents(pLevel, pPos, NonNullList.of(ItemStack.EMPTY, ItemStack(blockentity.pestle)))
-            }
-            super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving)
+        super.playerDestroy(pLevel, pPlayer, pPos, pState, pBlockEntity, pTool)
+        if (pBlockEntity is MortarBlockEntity) {
+            popResource(pLevel, pPos, ItemStack(pBlockEntity.pestle))
         }
     }
 
