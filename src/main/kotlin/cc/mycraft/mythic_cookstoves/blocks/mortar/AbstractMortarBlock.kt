@@ -55,7 +55,7 @@ abstract class AbstractMortarBlock(properties: Properties) :
         return if (blockentity is MortarBlockEntity && blockentity.pestle != Blocks.AIR) shapeWithPestle else shapeEmpty
     }
 
-    override fun newBlockEntity(pPos: BlockPos, pState: BlockState): BlockEntity? {
+    override fun newBlockEntity(pPos: BlockPos, pState: BlockState): BlockEntity {
         return MortarBlockEntity(pPos, pState)
     }
 
