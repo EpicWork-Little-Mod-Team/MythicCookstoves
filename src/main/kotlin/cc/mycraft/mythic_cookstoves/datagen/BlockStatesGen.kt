@@ -23,7 +23,7 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
     override fun registerStatesAndModels() {
         // models
         val cookstoveModel = getObjBlockModelFromBooleanProperty(ModBlocks.COOKSTOVE, CookstoveBlock.LIT)
-        bonfireModel(ModBlocks.BONFIRE, CookstoveBlock.LIT, mcLoc("block/campfire_fire"))
+        bonfireModel(ModBlocks.BONFIRE, CookstoveBlock.LIT, mcLoc("block/fire_0"))
         val bonfireParticleModel = getParticleBlockModelFromBooleanProperty(ModBlocks.BONFIRE, CookstoveBlock.LIT)
         val shallowPanModel = getObjBlockModel(ModBlocks.SHALLOW_PAN)
         val saucepanModel = getObjBlockModel(ModBlocks.SAUCEPAN)
