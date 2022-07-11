@@ -46,22 +46,5 @@ class LootTablesGen(pGenerator: DataGenerator) : LootTableProvider(pGenerator) {
         override fun getKnownBlocks(): MutableIterable<Block> {
             return ModBlocks.REGISTRY.entries.map { it.get() }.toMutableList()
         }
-
-        private fun createMortarWithPestleItemTable(
-            mortar: AbstractMortarBlock,
-            pestle: AbstractPestleBlock
-        ): LootTable.Builder {
-            return LootTable.lootTable().withPool(
-                applyExplosionCondition(
-                    mortar,
-                    LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(mortar))
-                )
-            ).withPool(
-                applyExplosionCondition(
-                    pestle,
-                    LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(pestle))
-                )
-            )
-        }
     }
 }
