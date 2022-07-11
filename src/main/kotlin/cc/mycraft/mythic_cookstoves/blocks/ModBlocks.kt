@@ -15,6 +15,7 @@ object ModBlocks {
     val REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, MythicCookstoves.MOD_ID)
 
     val COOKSTOVE by REGISTRY.registerObject("cookstove") { CookstoveBlock() }
+    val BONFIRE by REGISTRY.registerObject("bonfire") { BonfireBlock() }
     val SHALLOW_PAN by REGISTRY.registerObject("shallow_pan") { ShallowPanBlock() }
     val SAUCEPAN by REGISTRY.registerObject("saucepan") { SaucepanBlock() }
     val STONE_MORTAR by REGISTRY.registerObject("stone_mortar") { StoneMortarBlock() }

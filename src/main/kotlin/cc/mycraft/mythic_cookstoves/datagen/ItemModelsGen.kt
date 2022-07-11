@@ -18,6 +18,7 @@ class ItemModelsGen(pGenerator: DataGenerator, modId: String, existingFileHelper
         val items =
             ForgeRegistries.ITEMS.values.filter { it.registryName?.namespace == MythicCookstoves.MOD_ID }.toMutableSet()
         // skip item
+        items.remove(ModItems.BONFIRE)
         items.remove(ModItems.SHALLOW_PAN)
         items.remove(ModItems.SAUCEPAN)
         // generate

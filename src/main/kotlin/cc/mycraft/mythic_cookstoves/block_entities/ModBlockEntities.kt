@@ -13,4 +13,7 @@ object ModBlockEntities {
     val MORTAR by REGISTRY.registerObject("mortar") {
         BlockEntityType.Builder.of(::MortarBlockEntity, ModBlocks.STONE_MORTAR).build(null)
     }
+    val BONFIRE by REGISTRY.registerObject("bonfire") {
+        BlockEntityType.Builder.of(::BonfireBlockEntity, ModBlocks.BONFIRE).build(null)
+    }
 }

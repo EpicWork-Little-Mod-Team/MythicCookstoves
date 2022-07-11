@@ -13,6 +13,7 @@ object ModItems {
 
     // kitchen
     val COOKSTOVE by REGISTRY.registerObject("cookstove") { CookstoveItem() }
+    val BONFIRE by REGISTRY.registerObject("bonfire") { BonfireItem() }
     val SHALLOW_PAN by REGISTRY.registerObject("shallow_pan") { ShallowPanItem() }
     val SAUCEPAN by REGISTRY.registerObject("saucepan") { SaucepanItem() }
     val STONE_MORTAR by REGISTRY.registerObject("stone_mortar") { StoneMortarItem() }

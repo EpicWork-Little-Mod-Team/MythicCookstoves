@@ -1,8 +1,11 @@
 package cc.mycraft.mythic_cookstoves.datagen
 
 import cc.mycraft.mythic_cookstoves.MythicCookstoves
+import cc.mycraft.mythic_cookstoves.blocks.BonfireBlock
 import cc.mycraft.mythic_cookstoves.blocks.CookstoveBlock
 import cc.mycraft.mythic_cookstoves.blocks.ModBlocks
+import cc.mycraft.mythic_cookstoves.blocks.mortar.AbstractMortarBlock
+import cc.mycraft.mythic_cookstoves.blocks.pestle.AbstractPestleBlock
 import cc.mycraft.mythic_cookstoves.blocks.plant.Age3BushBlock
 import net.minecraft.data.DataGenerator
 import net.minecraft.resources.ResourceLocation
@@ -20,6 +23,8 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
     override fun registerStatesAndModels() {
         // models
         val cookstoveModel = getObjBlockModelFromBooleanProperty(ModBlocks.COOKSTOVE, CookstoveBlock.LIT)
+        bonfireModel(ModBlocks.BONFIRE, CookstoveBlock.LIT, mcLoc("block/campfire_fire"))
+        val bonfireParticleModel = getParticleBlockModelFromBooleanProperty(ModBlocks.BONFIRE, CookstoveBlock.LIT)
         val shallowPanModel = getObjBlockModel(ModBlocks.SHALLOW_PAN)
         val saucepanModel = getObjBlockModel(ModBlocks.SAUCEPAN)
         val stoneMortarModel = mortarModel(ModBlocks.STONE_MORTAR, mcLoc("block/stone"))
@@ -28,6 +33,9 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
         val chiliModel = getObjBlockModelFromProperty(ModBlocks.CHILI, Age3BushBlock.AGE)
         // blockstates
         horizontalBlock(ModBlocks.COOKSTOVE) { cookstoveModel[it.getValue(CookstoveBlock.LIT)] }
+        getVariantBuilder(ModBlocks.BONFIRE).forAllStates {
+            arrayOf(ConfiguredModel(bonfireParticleModel[it.getValue(CookstoveBlock.LIT)]))
+        }
         horizontalBlock(ModBlocks.SHALLOW_PAN, shallowPanModel)
         horizontalBlock(ModBlocks.SAUCEPAN, saucepanModel)
         horizontalBlock(ModBlocks.STONE_MORTAR, stoneMortarModel)
@@ -57,17 +65,43 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
         }
     }
 
-    private fun mortarModel(block: Block, texture: ResourceLocation): BlockModelBuilder {
+    private fun getParticleBlockModelFromBooleanProperty(
+        block: Block,
+        property: Property<Boolean>
+    ): Map<Boolean, BlockModelBuilder> {
+        check(block.registryName?.namespace == MythicCookstoves.MOD_ID) { "must be mod block" }
+        return property.possibleValues.associateWith {
+            val modelName = checkNotNull(block.registryName?.path) + if (it) "_${property.name}" else ""
+            getParticleBlockModel(modelName, modLoc(ModelProvider.BLOCK_FOLDER + "/" + modelName))
+        }
+    }
+
+    private fun mortarModel(block: AbstractMortarBlock, texture: ResourceLocation): BlockModelBuilder {
         return getObjBlockModel(block, texture, arrayOf(texture), "mortar")
     }
 
-    private fun pestleModel(block: Block, texture: ResourceLocation): BlockModelBuilder {
+    private fun pestleModel(block: AbstractPestleBlock, texture: ResourceLocation): BlockModelBuilder {
         return getObjBlockModel(block, texture, arrayOf(texture), "pestle").also {
             getObjBlockModel(
                 checkNotNull(block.registryName?.path) + "_inside",
                 texture,
                 arrayOf(texture),
                 "pestle_inside"
+            )
+        }
+    }
+
+    private fun bonfireModel(
+        block: BonfireBlock,
+        property: Property<Boolean>,
+        fireTexture: ResourceLocation
+    ): Map<Boolean, BlockModelBuilder> {
+        return property.possibleValues.associateWith {
+            val modelName = checkNotNull(block.registryName?.path) + if (it) "_${property.name}" else ""
+            val texture = modLoc(ModelProvider.BLOCK_FOLDER + "/" + modelName)
+            getObjBlockModel(
+                modelName,
+                if (it) arrayOf(texture, fireTexture) else arrayOf(texture)
             )
         }
     }
@@ -144,5 +178,13 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
             }.end()
             .texture("particle", particle)
             .apply { textures.forEachIndexed { i, texture -> texture("texture$i", texture) } }
+    }
+
+    private fun getParticleBlockModel(
+        modelName: String,
+        particle: ResourceLocation
+    ): BlockModelBuilder {
+        return models().getBuilder(ModelProvider.BLOCK_FOLDER + "/" + modelName + "_particle")
+            .texture("particle", particle)
     }
 }

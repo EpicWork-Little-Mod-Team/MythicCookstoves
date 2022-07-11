@@ -1,9 +1,12 @@
 package cc.mycraft.mythic_cookstoves
 
 import cc.mycraft.mythic_cookstoves.block_entities.ModBlockEntities
+import cc.mycraft.mythic_cookstoves.block_entities.renderer.BonfireRenderer
 import cc.mycraft.mythic_cookstoves.block_entities.renderer.MortarRenderer
+import cc.mycraft.mythic_cookstoves.blocks.BonfireBlock
 import cc.mycraft.mythic_cookstoves.blocks.ICutoutRender
 import cc.mycraft.mythic_cookstoves.blocks.ModBlocks
+import cc.mycraft.mythic_cookstoves.blocks.pestle.AbstractPestleBlock
 import cc.mycraft.mythic_cookstoves.items.ModItems
 import net.minecraft.client.renderer.ItemBlockRenderTypes
 import net.minecraft.client.renderer.RenderType
@@ -53,19 +56,20 @@ object MythicCookstoves {
     }
 
     private fun onModelRegistry(event: ModelRegistryEvent) {
-        ForgeRegistries.BLOCKS.values.filter {
-            it.registryName?.namespace == MOD_ID && it.registryName?.path?.endsWith("_pestle") ?: false
-        }.forEach {
-            ForgeModelBakery.addSpecialModel(
-                ResourceLocation(
-                    MOD_ID,
-                    "block/${checkNotNull(it.registryName).path}_inside"
-                )
-            )
+        ForgeRegistries.BLOCKS.values.filter { it.registryName?.namespace == MOD_ID }.forEach {
+            val registryName = it.registryName
+            checkNotNull(registryName)
+            if (it is AbstractPestleBlock) {
+                ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/${registryName.path}_inside"))
+            } else if (it is BonfireBlock) {
+                ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/${registryName.path}"))
+                ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/${registryName.path}_lit"))
+            }
         }
     }
 
     private fun onRendererRegister(event: EntityRenderersEvent.RegisterRenderers) {
         event.registerBlockEntityRenderer(ModBlockEntities.MORTAR, ::MortarRenderer)
+        event.registerBlockEntityRenderer(ModBlockEntities.BONFIRE, ::BonfireRenderer)
     }
 }
