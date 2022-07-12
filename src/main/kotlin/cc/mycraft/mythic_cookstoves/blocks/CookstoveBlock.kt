@@ -15,8 +15,7 @@ import net.minecraft.world.phys.shapes.VoxelShape
 
 class CookstoveBlock : AbstractOpaqueBlock(Properties.of(Material.STONE).requiresCorrectToolForDrops()) {
     init {
-        registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH))
-        registerDefaultState(stateDefinition.any().setValue(LIT, false))
+        registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, false))
     }
 
     override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block, BlockState>) {
