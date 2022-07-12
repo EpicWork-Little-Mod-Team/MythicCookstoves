@@ -16,6 +16,10 @@ object Sounds {
         SoundSource.BLOCKS,
         SoundData(SoundEvents.GRINDSTONE_USE, 1.0f, 0.8f),
     )
+    val BONFIRE_CRACKLE = WrappedSound(
+        SoundSource.BLOCKS,
+        SoundData(SoundEvents.CAMPFIRE_CRACKLE, 1.0f, 1.0f)
+    )
 
     data class SoundData(val sound: SoundEvent, val volume: Float, val pitch: Float)
 

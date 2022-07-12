@@ -1,6 +1,8 @@
 package cc.mycraft.mythic_cookstoves.blocks
 
+import cc.mycraft.mythic_cookstoves.Sounds
 import cc.mycraft.mythic_cookstoves.block_entities.BonfireBlockEntity
+import cc.mycraft.mythic_cookstoves.litDoubleBlockEmission
 import cc.mycraft.mythic_cookstoves.preventCreativeDropFromBottomPart
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
@@ -21,8 +23,11 @@ import net.minecraft.world.level.material.Material
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.Shapes
 import net.minecraft.world.phys.shapes.VoxelShape
+import java.util.*
 
-class BonfireBlock : Block(Properties.of(Material.WOOD).noOcclusion().sound(SoundType.WOOD)), EntityBlock {
+class BonfireBlock :
+    Block(Properties.of(Material.WOOD).noOcclusion().sound(SoundType.WOOD).lightLevel(litDoubleBlockEmission(15))),
+    EntityBlock {
     init {
         registerDefaultState(stateDefinition.any().setValue(LIT, false).setValue(HALF, DoubleBlockHalf.LOWER))
     }
@@ -51,6 +56,10 @@ class BonfireBlock : Block(Properties.of(Material.WOOD).noOcclusion().sound(Soun
         pContext: CollisionContext
     ): VoxelShape {
         return shape
+    }
+
+    override fun propagatesSkylightDown(pState: BlockState, pLevel: BlockGetter, pPos: BlockPos): Boolean {
+        return false
     }
 
     override fun newBlockEntity(pPos: BlockPos, pState: BlockState): BlockEntity {
@@ -89,6 +98,20 @@ class BonfireBlock : Block(Properties.of(Material.WOOD).noOcclusion().sound(Soun
         super.playerWillDestroy(pLevel, pPos, pState, pPlayer)
         if (!pLevel.isClientSide && pPlayer.isCreative) {
             preventCreativeDropFromBottomPart(pLevel, pPos, pState, pPlayer)
+        }
+    }
+
+    override fun animateTick(pState: BlockState, pLevel: Level, pPos: BlockPos, pRand: Random) {
+        if (pState.getValue(HALF) == DoubleBlockHalf.LOWER && pState.getValue(BonfireBlock.LIT)) {
+            if (pRand.nextInt(10) == 0) {
+                Sounds.BONFIRE_CRACKLE.playAt(
+                    pLevel,
+                    pPos,
+                    0.5f + pRand.nextFloat(),
+                    pRand.nextFloat() * 0.7f + 0.6f,
+                    false
+                )
+            }
         }
     }
 
