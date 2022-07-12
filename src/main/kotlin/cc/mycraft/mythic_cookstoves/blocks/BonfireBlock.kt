@@ -46,7 +46,8 @@ class BonfireBlock :
         val blockpos = pContext.clickedPos
         val level = pContext.level
         return if (blockpos.y < level.maxBuildHeight - 1 &&
-            level.getBlockState(blockpos.above()).canBeReplaced(pContext)) {
+            level.getBlockState(blockpos.above()).canBeReplaced(pContext)
+        ) {
             defaultBlockState().setValue(FACING, pContext.horizontalDirection.opposite)
         } else null
     }

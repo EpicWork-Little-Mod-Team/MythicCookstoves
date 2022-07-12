@@ -4,6 +4,7 @@ import cc.mycraft.mythic_cookstoves.MythicCookstoves
 import cc.mycraft.mythic_cookstoves.blocks.BonfireBlock
 import cc.mycraft.mythic_cookstoves.blocks.CookstoveBlock
 import cc.mycraft.mythic_cookstoves.blocks.ModBlocks
+import cc.mycraft.mythic_cookstoves.blocks.MythicFireBlock
 import cc.mycraft.mythic_cookstoves.blocks.mortar.AbstractMortarBlock
 import cc.mycraft.mythic_cookstoves.blocks.pestle.AbstractPestleBlock
 import cc.mycraft.mythic_cookstoves.blocks.plant.Age3BushBlock
@@ -22,6 +23,8 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
     BlockStateProvider(gen, modid, exFileHelper) {
     override fun registerStatesAndModels() {
         // models
+        mythicFireModel(ModBlocks.MYTHIC_FIRE, mcLoc("block/fire_0"))
+        val mythicFireParticleModel = getParticleBlockModel(ModBlocks.MYTHIC_FIRE)
         val cookstoveModel = getObjBlockModelFromBooleanProperty(ModBlocks.COOKSTOVE, CookstoveBlock.LIT)
         bonfireModel(ModBlocks.BONFIRE, CookstoveBlock.LIT, mcLoc("block/fire_0"))
         val bonfireParticleModel = getParticleBlockModelFromBooleanProperty(ModBlocks.BONFIRE, CookstoveBlock.LIT)
@@ -32,6 +35,7 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
         val strawberryBushModel = getObjBlockModelFromProperty(ModBlocks.STRAWBERRY_BUSH, Age3BushBlock.AGE)
         val chiliModel = getObjBlockModelFromProperty(ModBlocks.CHILI, Age3BushBlock.AGE)
         // blockstates
+        simpleBlock(ModBlocks.MYTHIC_FIRE, mythicFireParticleModel)
         horizontalBlock(ModBlocks.COOKSTOVE) { cookstoveModel[it.getValue(CookstoveBlock.LIT)] }
         horizontalBlock(ModBlocks.BONFIRE) { bonfireParticleModel[it.getValue(CookstoveBlock.LIT)] }
         horizontalBlock(ModBlocks.SHALLOW_PAN, shallowPanModel)
@@ -102,6 +106,18 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
                 if (it) arrayOf(texture, fireTexture) else arrayOf(texture)
             )
         }
+    }
+
+    private fun mythicFireModel(
+        block: MythicFireBlock,
+        fireTexture: ResourceLocation
+    ): BlockModelBuilder {
+        val modelName = checkNotNull(block.registryName?.path)
+        val texture = modLoc(ModelProvider.BLOCK_FOLDER + "/" + modelName)
+        return getObjBlockModel(
+            modelName,
+            arrayOf(texture, fireTexture)
+        )
     }
 
     private fun getObjBlockModel(block: Block): BlockModelBuilder {
@@ -176,6 +192,20 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
             }.end()
             .texture("particle", particle)
             .apply { textures.forEachIndexed { i, texture -> texture("texture$i", texture) } }
+    }
+
+    private fun getParticleBlockModel(block: Block): BlockModelBuilder {
+        check(block.registryName?.namespace == MythicCookstoves.MOD_ID) { "must be mod block" }
+        val modelName = checkNotNull(block.registryName?.path)
+        return getParticleBlockModel(modelName, modLoc(ModelProvider.BLOCK_FOLDER + "/" + modelName))
+    }
+
+    private fun getParticleBlockModel(
+        block: Block,
+        particle: ResourceLocation
+    ): BlockModelBuilder {
+        check(block.registryName?.namespace == MythicCookstoves.MOD_ID) { "must be mod block" }
+        return getParticleBlockModel(checkNotNull(block.registryName?.path), particle)
     }
 
     private fun getParticleBlockModel(

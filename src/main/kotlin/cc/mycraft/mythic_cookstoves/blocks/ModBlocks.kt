@@ -14,6 +14,7 @@ import thedarkcolour.kotlinforforge.forge.registerObject
 object ModBlocks {
     val REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, MythicCookstoves.MOD_ID)
 
+    val MYTHIC_FIRE by REGISTRY.registerObject("mythic_fire") { MythicFireBlock() }
     val COOKSTOVE by REGISTRY.registerObject("cookstove") { CookstoveBlock() }
     val BONFIRE by REGISTRY.registerObject("bonfire") { BonfireBlock() }
     val SHALLOW_PAN by REGISTRY.registerObject("shallow_pan") { ShallowPanBlock() }

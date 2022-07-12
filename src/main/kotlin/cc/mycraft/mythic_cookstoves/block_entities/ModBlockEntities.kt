@@ -16,4 +16,7 @@ object ModBlockEntities {
     val BONFIRE by REGISTRY.registerObject("bonfire") {
         BlockEntityType.Builder.of(::BonfireBlockEntity, ModBlocks.BONFIRE).build(null)
     }
+    val MYTHIC_FIRE by REGISTRY.registerObject("mythic_fire") {
+        BlockEntityType.Builder.of(::MythicFireBlockEntity, ModBlocks.MYTHIC_FIRE).build(null)
+    }
 }

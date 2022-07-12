@@ -3,7 +3,6 @@ package cc.mycraft.mythic_cookstoves.block_entities.renderer
 import cc.mycraft.mythic_cookstoves.MythicCookstoves
 import cc.mycraft.mythic_cookstoves.block_entities.BonfireBlockEntity
 import cc.mycraft.mythic_cookstoves.blocks.BonfireBlock
-import cc.mycraft.mythic_cookstoves.blocks.mortar.AbstractMortarBlock
 import com.mojang.blaze3d.vertex.PoseStack
 import com.mojang.math.Vector3f
 import net.minecraft.client.renderer.MultiBufferSource

@@ -11,6 +11,9 @@ import thedarkcolour.kotlinforforge.forge.registerObject
 object ModItems {
     val REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, MythicCookstoves.MOD_ID)
 
+    // mythic fire
+    val MYTHIC_FIRE by REGISTRY.registerObject("mythic_fire") { MythicFireItem() }
+
     // kitchen
     val COOKSTOVE by REGISTRY.registerObject("cookstove") { CookstoveItem() }
     val BONFIRE by REGISTRY.registerObject("bonfire") { BonfireItem() }

@@ -31,6 +31,7 @@ class LootTablesGen(pGenerator: DataGenerator) : LootTableProvider(pGenerator) {
 
     private class BlockLoots : BlockLoot() {
         override fun addTables() {
+            add(ModBlocks.MYTHIC_FIRE, noDrop())
             dropSelf(ModBlocks.COOKSTOVE)
             add(ModBlocks.BONFIRE, ::createDoubleBlockTable)
             dropSelf(ModBlocks.SHALLOW_PAN)
