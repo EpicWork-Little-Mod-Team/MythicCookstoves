@@ -51,7 +51,7 @@ class MythicFireBlock :
                 false
             )
         }
-        if (pRand.nextInt(4) == 0) {
+        if (pRand.nextBoolean()) {
             val x = pPos.x + pRand.nextDouble()
             val y = pPos.y + pRand.nextDouble()
             val z = pPos.z + pRand.nextDouble()
