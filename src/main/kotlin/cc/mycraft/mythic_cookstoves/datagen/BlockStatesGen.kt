@@ -33,9 +33,7 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
         val chiliModel = getObjBlockModelFromProperty(ModBlocks.CHILI, Age3BushBlock.AGE)
         // blockstates
         horizontalBlock(ModBlocks.COOKSTOVE) { cookstoveModel[it.getValue(CookstoveBlock.LIT)] }
-        getVariantBuilder(ModBlocks.BONFIRE).forAllStates {
-            arrayOf(ConfiguredModel(bonfireParticleModel[it.getValue(CookstoveBlock.LIT)]))
-        }
+        horizontalBlock(ModBlocks.BONFIRE) { bonfireParticleModel[it.getValue(CookstoveBlock.LIT)] }
         horizontalBlock(ModBlocks.SHALLOW_PAN, shallowPanModel)
         horizontalBlock(ModBlocks.SAUCEPAN, saucepanModel)
         horizontalBlock(ModBlocks.STONE_MORTAR, stoneMortarModel)

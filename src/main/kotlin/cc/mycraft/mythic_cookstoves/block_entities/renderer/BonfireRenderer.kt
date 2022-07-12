@@ -3,7 +3,9 @@ package cc.mycraft.mythic_cookstoves.block_entities.renderer
 import cc.mycraft.mythic_cookstoves.MythicCookstoves
 import cc.mycraft.mythic_cookstoves.block_entities.BonfireBlockEntity
 import cc.mycraft.mythic_cookstoves.blocks.BonfireBlock
+import cc.mycraft.mythic_cookstoves.blocks.mortar.AbstractMortarBlock
 import com.mojang.blaze3d.vertex.PoseStack
+import com.mojang.math.Vector3f
 import net.minecraft.client.renderer.MultiBufferSource
 import net.minecraft.client.renderer.RenderType
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer
@@ -40,7 +42,11 @@ class BonfireRenderer(pContext: BlockEntityRendererProvider.Context) : BlockEnti
         pPackedOverlay: Int
     ) {
         if (pBlockEntity.blockState.getValue(BonfireBlock.HALF) != DoubleBlockHalf.LOWER) return
+        val facingYRot = pBlockEntity.blockState.getValue(BonfireBlock.FACING).toYRot() / 360 + 0.5
         pPoseStack.pushPose()
+        pPoseStack.translate(0.5, 0.5, 0.5)
+        pPoseStack.mulPose(Vector3f.YP.rotation(-(facingYRot * 2 * Math.PI).toFloat()))
+        pPoseStack.translate(-0.5, -0.5, -0.5)
         getBonfireModel(pBlockEntity.blockState).render(
             pPoseStack,
             pBufferSource,

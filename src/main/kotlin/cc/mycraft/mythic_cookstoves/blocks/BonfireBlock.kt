@@ -29,11 +29,15 @@ class BonfireBlock :
     Block(Properties.of(Material.WOOD).noOcclusion().sound(SoundType.WOOD).lightLevel(litDoubleBlockEmission(15))),
     EntityBlock {
     init {
-        registerDefaultState(stateDefinition.any().setValue(LIT, false).setValue(HALF, DoubleBlockHalf.LOWER))
+        registerDefaultState(
+            stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, false)
+                .setValue(HALF, DoubleBlockHalf.LOWER)
+        )
     }
 
     override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block, BlockState>) {
         super.createBlockStateDefinition(pBuilder)
+        pBuilder.add(FACING)
         pBuilder.add(LIT)
         pBuilder.add(HALF)
     }
@@ -41,10 +45,9 @@ class BonfireBlock :
     override fun getStateForPlacement(pContext: BlockPlaceContext): BlockState? {
         val blockpos = pContext.clickedPos
         val level = pContext.level
-        return if (blockpos.y < level.maxBuildHeight - 1 && level.getBlockState(blockpos.above())
-                .canBeReplaced(pContext)
-        ) {
-            super.getStateForPlacement(pContext)
+        return if (blockpos.y < level.maxBuildHeight - 1 &&
+            level.getBlockState(blockpos.above()).canBeReplaced(pContext)) {
+            defaultBlockState().setValue(FACING, pContext.horizontalDirection.opposite)
         } else null
     }
 
@@ -89,7 +92,7 @@ class BonfireBlock :
         val half = pState.getValue(DoorBlock.HALF)
         return if (pDirection.axis === Direction.Axis.Y && (half == DoubleBlockHalf.LOWER) == (pDirection == Direction.UP)) {
             if (pNeighborState.`is`(this) && pNeighborState.getValue(DoorBlock.HALF) != half)
-                pState.setValue(LIT, pNeighborState.getValue(LIT))
+                pState.setValue(FACING, pNeighborState.getValue(FACING)).setValue(LIT, pNeighborState.getValue(LIT))
             else Blocks.AIR.defaultBlockState()
         } else super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos)
     }
@@ -116,6 +119,7 @@ class BonfireBlock :
     }
 
     companion object {
+        val FACING = BlockStateProperties.HORIZONTAL_FACING
         val LIT = BlockStateProperties.LIT
         val HALF = BlockStateProperties.DOUBLE_BLOCK_HALF
         private val shape = Shapes.block()
