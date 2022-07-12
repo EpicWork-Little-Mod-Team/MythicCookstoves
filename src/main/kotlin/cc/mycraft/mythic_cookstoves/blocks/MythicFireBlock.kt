@@ -55,7 +55,7 @@ class MythicFireBlock :
             val x = pPos.x + pRand.nextDouble()
             val y = pPos.y + pRand.nextDouble()
             val z = pPos.z + pRand.nextDouble()
-            val speedFunc = { pRand.nextGaussian() }
+            val speedFunc = { pRand.nextGaussian(0.0,0.01) }
             pLevel.addParticle(ParticleTypes.FLAME, x, y, z, speedFunc(), speedFunc(), speedFunc())
         }
     }
