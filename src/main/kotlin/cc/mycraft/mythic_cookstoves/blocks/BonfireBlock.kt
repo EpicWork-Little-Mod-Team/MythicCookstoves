@@ -61,6 +61,11 @@ class BonfireBlock :
         return shape
     }
 
+    @Deprecated("Deprecated in Java")
+    override fun getShadeBrightness(pState: BlockState, pLevel: BlockGetter, pPos: BlockPos): Float {
+        return 1.0f
+    }
+
     override fun propagatesSkylightDown(pState: BlockState, pLevel: BlockGetter, pPos: BlockPos): Boolean {
         return false
     }
@@ -105,7 +110,7 @@ class BonfireBlock :
     }
 
     override fun animateTick(pState: BlockState, pLevel: Level, pPos: BlockPos, pRand: Random) {
-        if (pState.getValue(HALF) == DoubleBlockHalf.LOWER && pState.getValue(BonfireBlock.LIT)) {
+        if (pState.getValue(HALF) == DoubleBlockHalf.LOWER && pState.getValue(LIT)) {
             if (pRand.nextInt(10) == 0) {
                 Sounds.BONFIRE_CRACKLE.playAt(
                     pLevel,
