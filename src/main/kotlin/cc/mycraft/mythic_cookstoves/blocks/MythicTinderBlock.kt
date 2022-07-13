@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.levelgen.Heightmap
 import net.minecraft.world.level.material.Material
+import net.minecraft.world.level.pathfinder.PathComputationType
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
 import java.util.*
@@ -80,6 +81,16 @@ class MythicTinderBlock :
             val speedFunc = { pRand.nextGaussian(0.0, 0.1) }
             pLevel.addParticle(ParticleTypes.ELECTRIC_SPARK, x1, y1, z1, speedFunc(), speedFunc(), speedFunc())
         }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun isPathfindable(
+        pState: BlockState,
+        pLevel: BlockGetter,
+        pPos: BlockPos,
+        pType: PathComputationType
+    ): Boolean {
+        return false
     }
 
     companion object {
