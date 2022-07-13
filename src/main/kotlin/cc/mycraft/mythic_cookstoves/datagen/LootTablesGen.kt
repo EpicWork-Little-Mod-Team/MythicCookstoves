@@ -1,7 +1,6 @@
 package cc.mycraft.mythic_cookstoves.datagen
 
 import cc.mycraft.mythic_cookstoves.blocks.ModBlocks
-import cc.mycraft.mythic_cookstoves.items.ModItems
 import com.mojang.datafixers.util.Pair
 import net.minecraft.data.DataGenerator
 import net.minecraft.data.loot.BlockLoot
@@ -32,7 +31,7 @@ class LootTablesGen(pGenerator: DataGenerator) : LootTableProvider(pGenerator) {
 
     private class BlockLoots : BlockLoot() {
         override fun addTables() {
-            dropWhenSilkTouch(ModBlocks.mythic_tinder)
+            dropWhenSilkTouch(ModBlocks.MYTHIC_TINDER)
             dropSelf(ModBlocks.COOKSTOVE)
             add(ModBlocks.BONFIRE, ::createDoubleBlockTable)
             dropSelf(ModBlocks.SHALLOW_PAN)

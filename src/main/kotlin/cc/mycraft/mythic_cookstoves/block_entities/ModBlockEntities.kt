@@ -10,13 +10,13 @@ import thedarkcolour.kotlinforforge.forge.registerObject
 object ModBlockEntities {
     val REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MythicCookstoves.MOD_ID)
 
+    val MYTHIC_TINDER by REGISTRY.registerObject("mythic_tinder") {
+        BlockEntityType.Builder.of(::MythicTinderBlockEntity, ModBlocks.MYTHIC_TINDER).build(null)
+    }
     val MORTAR by REGISTRY.registerObject("mortar") {
         BlockEntityType.Builder.of(::MortarBlockEntity, ModBlocks.STONE_MORTAR).build(null)
     }
     val BONFIRE by REGISTRY.registerObject("bonfire") {
         BlockEntityType.Builder.of(::BonfireBlockEntity, ModBlocks.BONFIRE).build(null)
-    }
-    val mythic_tinder by REGISTRY.registerObject("mythic_tinder") {
-        BlockEntityType.Builder.of(::MythicTinderBlockEntity, ModBlocks.mythic_tinder).build(null)
     }
 }

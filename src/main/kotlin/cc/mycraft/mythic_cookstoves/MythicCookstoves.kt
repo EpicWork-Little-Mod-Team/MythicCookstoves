@@ -73,7 +73,7 @@ object MythicCookstoves {
     }
 
     private fun onRendererRegister(event: EntityRenderersEvent.RegisterRenderers) {
-        event.registerBlockEntityRenderer(ModBlockEntities.mythic_tinder, ::MythicTinderRenderer)
+        event.registerBlockEntityRenderer(ModBlockEntities.MYTHIC_TINDER, ::MythicTinderRenderer)
         event.registerBlockEntityRenderer(ModBlockEntities.MORTAR, ::MortarRenderer)
         event.registerBlockEntityRenderer(ModBlockEntities.BONFIRE, ::BonfireRenderer)
     }

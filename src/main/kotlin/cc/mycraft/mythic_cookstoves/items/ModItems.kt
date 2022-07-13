@@ -12,7 +12,7 @@ object ModItems {
     val REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, MythicCookstoves.MOD_ID)
 
     // mythic fire
-    val mythic_tinder by REGISTRY.registerObject("mythic_tinder") { MythicTinderItem() }
+    val MYTHIC_TINDER by REGISTRY.registerObject("mythic_tinder") { MythicTinderItem() }
 
     // kitchen
     val COOKSTOVE by REGISTRY.registerObject("cookstove") { CookstoveItem() }
