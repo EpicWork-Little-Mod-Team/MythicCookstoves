@@ -29,12 +29,12 @@ class MythicTinderBlockEntity(pWorldPosition: BlockPos, pBlockState: BlockState)
                     pPos.x + 0.5,
                     pPos.y + 0.5,
                     pPos.z + 0.5,
-                    8.0,
+                    16.0,
                     true
                 )
                 val targetPos = if (target != null) Vec3(target.x, target.y, target.z) else blockPos
-                val distance = if (target != null) min(8.0, targetPos.distanceTo(blockPos)) else 8.0
-                val threshold = 2.0.pow((8 - distance) / 2) / 400
+                val distance = if (target != null) min(16.0, targetPos.distanceTo(blockPos)) else 16.0
+                val threshold = 2.0.pow((16 - distance) / 2) / 400
                 if (pLevel.random.nextDouble() < threshold) {
                     val lightning = EntityType.LIGHTNING_BOLT.create(pLevel)
                     lightning?.moveTo(targetPos)
