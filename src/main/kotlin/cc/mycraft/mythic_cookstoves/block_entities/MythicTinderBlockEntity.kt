@@ -5,8 +5,8 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 
-class MythicFireBlockEntity(pWorldPosition: BlockPos, pBlockState: BlockState) :
-    BlockEntity(ModBlockEntities.MYTHIC_FIRE, pWorldPosition, pBlockState) {
+class MythicTinderBlockEntity(pWorldPosition: BlockPos, pBlockState: BlockState) :
+    BlockEntity(ModBlockEntities.mythic_tinder, pWorldPosition, pBlockState) {
     override fun getUpdatePacket(): ClientboundBlockEntityDataPacket? {
         return ClientboundBlockEntityDataPacket.create(this)
     }

@@ -4,7 +4,7 @@ import cc.mycraft.mythic_cookstoves.MythicCookstoves
 import cc.mycraft.mythic_cookstoves.blocks.BonfireBlock
 import cc.mycraft.mythic_cookstoves.blocks.CookstoveBlock
 import cc.mycraft.mythic_cookstoves.blocks.ModBlocks
-import cc.mycraft.mythic_cookstoves.blocks.MythicFireBlock
+import cc.mycraft.mythic_cookstoves.blocks.MythicTinderBlock
 import cc.mycraft.mythic_cookstoves.blocks.mortar.AbstractMortarBlock
 import cc.mycraft.mythic_cookstoves.blocks.pestle.AbstractPestleBlock
 import cc.mycraft.mythic_cookstoves.blocks.plant.Age3BushBlock
@@ -23,10 +23,10 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
     BlockStateProvider(gen, modid, exFileHelper) {
     override fun registerStatesAndModels() {
         // models
-        mythicFireModel(ModBlocks.MYTHIC_FIRE, mcLoc("block/fire_0"))
-        val mythicFireParticleModel = getParticleBlockModel(ModBlocks.MYTHIC_FIRE)
+        mythicFireModel(ModBlocks.mythic_tinder, modLoc("block/mythic_fire"))
+        val mythicFireParticleModel = getParticleBlockModel(ModBlocks.mythic_tinder)
         val cookstoveModel = getObjBlockModelFromBooleanProperty(ModBlocks.COOKSTOVE, CookstoveBlock.LIT)
-        bonfireModel(ModBlocks.BONFIRE, CookstoveBlock.LIT, mcLoc("block/fire_0"))
+        bonfireModel(ModBlocks.BONFIRE, CookstoveBlock.LIT, modLoc("block/mythic_fire"))
         val bonfireParticleModel = getParticleBlockModelFromBooleanProperty(ModBlocks.BONFIRE, CookstoveBlock.LIT)
         val shallowPanModel = getObjBlockModel(ModBlocks.SHALLOW_PAN)
         val saucepanModel = getObjBlockModel(ModBlocks.SAUCEPAN)
@@ -35,7 +35,7 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
         val strawberryBushModel = getObjBlockModelFromProperty(ModBlocks.STRAWBERRY_BUSH, Age3BushBlock.AGE)
         val chiliModel = getObjBlockModelFromProperty(ModBlocks.CHILI, Age3BushBlock.AGE)
         // blockstates
-        simpleBlock(ModBlocks.MYTHIC_FIRE, mythicFireParticleModel)
+        simpleBlock(ModBlocks.mythic_tinder, mythicFireParticleModel)
         horizontalBlock(ModBlocks.COOKSTOVE) { cookstoveModel[it.getValue(CookstoveBlock.LIT)] }
         horizontalBlock(ModBlocks.BONFIRE) { bonfireParticleModel[it.getValue(CookstoveBlock.LIT)] }
         horizontalBlock(ModBlocks.SHALLOW_PAN, shallowPanModel)
@@ -109,7 +109,7 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
     }
 
     private fun mythicFireModel(
-        block: MythicFireBlock,
+        block: MythicTinderBlock,
         fireTexture: ResourceLocation
     ): BlockModelBuilder {
         val modelName = checkNotNull(block.registryName?.path)

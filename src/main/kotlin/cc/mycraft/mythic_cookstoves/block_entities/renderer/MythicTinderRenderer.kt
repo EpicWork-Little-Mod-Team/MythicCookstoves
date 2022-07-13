@@ -1,7 +1,7 @@
 package cc.mycraft.mythic_cookstoves.block_entities.renderer
 
 import cc.mycraft.mythic_cookstoves.MythicCookstoves
-import cc.mycraft.mythic_cookstoves.block_entities.MythicFireBlockEntity
+import cc.mycraft.mythic_cookstoves.block_entities.MythicTinderBlockEntity
 import com.mojang.blaze3d.vertex.PoseStack
 import com.mojang.math.Vector3f
 import net.minecraft.client.renderer.MultiBufferSource
@@ -15,7 +15,7 @@ import net.minecraftforge.client.model.renderable.BakedRenderable
 import kotlin.math.cos
 import kotlin.math.sin
 
-class MythicFireRenderer(pContext: BlockEntityRendererProvider.Context) : BlockEntityRenderer<MythicFireBlockEntity> {
+class MythicTinderRenderer(pContext: BlockEntityRendererProvider.Context) : BlockEntityRenderer<MythicTinderBlockEntity> {
     private var model: BakedRenderable? = null
 
     private fun getModel(block: Block): BakedRenderable {
@@ -28,7 +28,7 @@ class MythicFireRenderer(pContext: BlockEntityRendererProvider.Context) : BlockE
     }
 
     override fun render(
-        pBlockEntity: MythicFireBlockEntity,
+        pBlockEntity: MythicTinderBlockEntity,
         pPartialTick: Float,
         pPoseStack: PoseStack,
         pBufferSource: MultiBufferSource,

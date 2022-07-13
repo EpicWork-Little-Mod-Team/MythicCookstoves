@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.OnlyIn
 
 @OnlyIn(Dist.CLIENT)
 object Sounds {
-    val MYTHIC_FIRE_AMBIENT = WrappedSound(
+    val mythic_tinder_AMBIENT = WrappedSound(
         SoundSource.BLOCKS,
         SoundData(SoundEvents.FIRE_AMBIENT, 1.0f, 1.2f),
         SoundData(SoundEvents.FIRE_AMBIENT, 1.0f, 0.8f),

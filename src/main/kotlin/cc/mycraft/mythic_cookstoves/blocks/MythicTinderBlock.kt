@@ -1,7 +1,7 @@
 package cc.mycraft.mythic_cookstoves.blocks
 
 import cc.mycraft.mythic_cookstoves.Sounds
-import cc.mycraft.mythic_cookstoves.block_entities.MythicFireBlockEntity
+import cc.mycraft.mythic_cookstoves.block_entities.MythicTinderBlockEntity
 import net.minecraft.core.BlockPos
 import net.minecraft.core.particles.ParticleTypes
 import net.minecraft.world.damagesource.DamageSource
@@ -18,7 +18,7 @@ import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
 import java.util.*
 
-class MythicFireBlock :
+class MythicTinderBlock :
     Block(Properties.of(Material.FIRE).noCollission().sound(SoundType.AMETHYST).lightLevel { 15 }), EntityBlock {
     @Deprecated("use BlockState's getShape instead")
     override fun getShape(
@@ -38,12 +38,12 @@ class MythicFireBlock :
     }
 
     override fun newBlockEntity(pPos: BlockPos, pState: BlockState): BlockEntity {
-        return MythicFireBlockEntity(pPos, pState)
+        return MythicTinderBlockEntity(pPos, pState)
     }
 
     override fun animateTick(pState: BlockState, pLevel: Level, pPos: BlockPos, pRand: Random) {
         if (pRand.nextInt(12) == 0) {
-            Sounds.MYTHIC_FIRE_AMBIENT.playAt(
+            Sounds.mythic_tinder_AMBIENT.playAt(
                 pLevel,
                 pPos,
                 1.2f + pRand.nextFloat(),

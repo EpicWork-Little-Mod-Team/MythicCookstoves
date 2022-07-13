@@ -3,11 +3,11 @@ package cc.mycraft.mythic_cookstoves
 import cc.mycraft.mythic_cookstoves.block_entities.ModBlockEntities
 import cc.mycraft.mythic_cookstoves.block_entities.renderer.BonfireRenderer
 import cc.mycraft.mythic_cookstoves.block_entities.renderer.MortarRenderer
-import cc.mycraft.mythic_cookstoves.block_entities.renderer.MythicFireRenderer
+import cc.mycraft.mythic_cookstoves.block_entities.renderer.MythicTinderRenderer
 import cc.mycraft.mythic_cookstoves.blocks.BonfireBlock
 import cc.mycraft.mythic_cookstoves.blocks.ICutoutRender
 import cc.mycraft.mythic_cookstoves.blocks.ModBlocks
-import cc.mycraft.mythic_cookstoves.blocks.MythicFireBlock
+import cc.mycraft.mythic_cookstoves.blocks.MythicTinderBlock
 import cc.mycraft.mythic_cookstoves.blocks.pestle.AbstractPestleBlock
 import cc.mycraft.mythic_cookstoves.items.ModItems
 import net.minecraft.client.renderer.ItemBlockRenderTypes
@@ -63,7 +63,7 @@ object MythicCookstoves {
             checkNotNull(registryName)
             if (it is AbstractPestleBlock) {
                 ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/${registryName.path}_inside"))
-            } else if (it is MythicFireBlock) {
+            } else if (it is MythicTinderBlock) {
                 ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/${registryName.path}"))
             } else if (it is BonfireBlock) {
                 ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/${registryName.path}"))
@@ -73,7 +73,7 @@ object MythicCookstoves {
     }
 
     private fun onRendererRegister(event: EntityRenderersEvent.RegisterRenderers) {
-        event.registerBlockEntityRenderer(ModBlockEntities.MYTHIC_FIRE, ::MythicFireRenderer)
+        event.registerBlockEntityRenderer(ModBlockEntities.mythic_tinder, ::MythicTinderRenderer)
         event.registerBlockEntityRenderer(ModBlockEntities.MORTAR, ::MortarRenderer)
         event.registerBlockEntityRenderer(ModBlockEntities.BONFIRE, ::BonfireRenderer)
     }
