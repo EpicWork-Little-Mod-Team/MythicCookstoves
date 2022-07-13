@@ -17,7 +17,7 @@ class MythicTinderBlockEntity(pWorldPosition: BlockPos, pBlockState: BlockState)
 
     companion object {
         fun tick(pLevel: Level, pPos: BlockPos, pState: BlockState, pBlockEntity: BlockEntity) {
-            if (pLevel.random.nextInt(400) == 0 && pLevel.canSeeSky(pPos)) {
+            if (pLevel.canSeeSky(pPos) && pLevel.random.nextInt(400) == 0) {
                 val lightning = EntityType.LIGHTNING_BOLT.create(pLevel)
                 lightning?.moveTo(Vec3.atBottomCenterOf(pPos))
                 lightning?.let(pLevel::addFreshEntity)

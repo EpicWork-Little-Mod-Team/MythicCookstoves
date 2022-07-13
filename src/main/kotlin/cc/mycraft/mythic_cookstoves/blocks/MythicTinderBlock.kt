@@ -2,7 +2,6 @@ package cc.mycraft.mythic_cookstoves.blocks
 
 import cc.mycraft.mythic_cookstoves.Sounds
 import cc.mycraft.mythic_cookstoves.block_entities.ModBlockEntities
-import cc.mycraft.mythic_cookstoves.block_entities.MortarBlockEntity
 import cc.mycraft.mythic_cookstoves.block_entities.MythicTinderBlockEntity
 import net.minecraft.core.BlockPos
 import net.minecraft.core.particles.ParticleTypes
@@ -67,18 +66,18 @@ class MythicTinderBlock :
             )
         }
         if (pRand.nextBoolean()) {
-            val x = pPos.x + pRand.nextDouble()
-            val y = pPos.y + pRand.nextDouble()
-            val z = pPos.z + pRand.nextDouble()
-            val speedFunc = { pRand.nextGaussian(0.0,0.01) }
-            pLevel.addParticle(ParticleTypes.FLAME, x, y, z, speedFunc(), speedFunc(), speedFunc())
+            val x0 = pPos.x + pRand.nextDouble()
+            val y0 = pPos.y + pRand.nextDouble()
+            val z0 = pPos.z + pRand.nextDouble()
+            val speedFunc = { pRand.nextGaussian(0.0, 0.01) }
+            pLevel.addParticle(ParticleTypes.FLAME, x0, y0, z0, speedFunc(), speedFunc(), speedFunc())
         }
-        if (pRand.nextInt(4) == 0) {
-            val x = pPos.x + pRand.nextDouble()
-            val y = pPos.y + pRand.nextDouble()
-            val z = pPos.z + pRand.nextDouble()
-            val speedFunc = { pRand.nextGaussian(0.0,0.01) }
-            pLevel.addParticle(ParticleTypes.ELECTRIC_SPARK, x, y, z, speedFunc(), speedFunc(), speedFunc())
+        if (pLevel.canSeeSky(pPos)) {
+            val x1 = pPos.x + pRand.nextDouble()
+            val y1 = pPos.y + pRand.nextDouble()
+            val z1 = pPos.z + pRand.nextDouble()
+            val speedFunc = { pRand.nextGaussian(0.0, 0.1) }
+            pLevel.addParticle(ParticleTypes.ELECTRIC_SPARK, x1, y1, z1, speedFunc(), speedFunc(), speedFunc())
         }
     }
 
