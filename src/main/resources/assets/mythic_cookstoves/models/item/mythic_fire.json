@@ -1,5 +1,5 @@
 {
-  "parent": "mythic_cookstoves:block/mythic_fire",
+  "parent": "mythic_cookstoves:block/mythic_tinder",
   "display": {
     "thirdperson_righthand": {
       "translation": [0, 3, 1],
