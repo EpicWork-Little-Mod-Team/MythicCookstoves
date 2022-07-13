@@ -6,8 +6,8 @@ import net.minecraft.world.entity.EntityType
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.levelgen.Heightmap
 import net.minecraft.world.phys.Vec3
-import thedarkcolour.kotlinforforge.forge.callWhenOn
 
 class MythicTinderBlockEntity(pWorldPosition: BlockPos, pBlockState: BlockState) :
     BlockEntity(ModBlockEntities.MYTHIC_TINDER, pWorldPosition, pBlockState) {
@@ -17,7 +17,10 @@ class MythicTinderBlockEntity(pWorldPosition: BlockPos, pBlockState: BlockState)
 
     companion object {
         fun tick(pLevel: Level, pPos: BlockPos, pState: BlockState, pBlockEntity: BlockEntity) {
-            if (pLevel.canSeeSky(pPos) && pLevel.random.nextInt(400) == 0) {
+            if (
+                pPos.y == pLevel.getHeight(Heightmap.Types.WORLD_SURFACE, pPos.x, pPos.z) - 1 &&
+                pLevel.random.nextInt(400) == 0
+            ) {
                 val lightning = EntityType.LIGHTNING_BOLT.create(pLevel)
                 lightning?.moveTo(Vec3.atBottomCenterOf(pPos))
                 lightning?.let(pLevel::addFreshEntity)

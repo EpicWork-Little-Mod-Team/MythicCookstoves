@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.entity.BlockEntityTicker
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.levelgen.Heightmap
 import net.minecraft.world.level.material.Material
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
@@ -72,7 +73,7 @@ class MythicTinderBlock :
             val speedFunc = { pRand.nextGaussian(0.0, 0.01) }
             pLevel.addParticle(ParticleTypes.FLAME, x0, y0, z0, speedFunc(), speedFunc(), speedFunc())
         }
-        if (pLevel.canSeeSky(pPos)) {
+        if (pPos.y == pLevel.getHeight(Heightmap.Types.WORLD_SURFACE, pPos.x, pPos.z) - 1) {
             val x1 = pPos.x + pRand.nextDouble()
             val y1 = pPos.y + pRand.nextDouble()
             val z1 = pPos.z + pRand.nextDouble()
