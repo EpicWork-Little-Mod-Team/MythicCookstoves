@@ -35,6 +35,9 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
         val strawberryBushModel = getObjBlockModelFromProperty(ModBlocks.STRAWBERRY_BUSH, Age3BushBlock.AGE)
         val chiliModel = getObjBlockModelFromProperty(ModBlocks.CHILI, Age3BushBlock.AGE)
         // blockstates
+
+        simpleBlock(ModBlocks.FURNITURE, models().getExistingFile(mcLoc("block/barrier")))
+
         simpleBlock(ModBlocks.MYTHIC_TINDER, mythicFireParticleModel)
         horizontalBlock(ModBlocks.COOKSTOVE) { cookstoveModel[it.getValue(CookstoveBlock.LIT)] }
         horizontalBlock(ModBlocks.BONFIRE) { bonfireParticleModel[it.getValue(CookstoveBlock.LIT)] }

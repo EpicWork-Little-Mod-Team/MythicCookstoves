@@ -10,6 +10,10 @@ import thedarkcolour.kotlinforforge.forge.registerObject
 object ModBlockEntities {
     val REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MythicCookstoves.MOD_ID)
 
+    val FURNITURE by REGISTRY.registerObject("furniture") {
+        BlockEntityType.Builder.of(::FurnitureBlockEntity, ModBlocks.FURNITURE).build(null)
+    }
+
     val MYTHIC_TINDER by REGISTRY.registerObject("mythic_tinder") {
         BlockEntityType.Builder.of(::MythicTinderBlockEntity, ModBlocks.MYTHIC_TINDER).build(null)
     }

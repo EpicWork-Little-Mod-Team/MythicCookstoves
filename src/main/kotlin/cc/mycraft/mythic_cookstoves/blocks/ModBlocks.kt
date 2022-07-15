@@ -1,6 +1,7 @@
 package cc.mycraft.mythic_cookstoves.blocks
 
 import cc.mycraft.mythic_cookstoves.MythicCookstoves
+import cc.mycraft.mythic_cookstoves.blocks.furniture.FurnitureBlock
 import cc.mycraft.mythic_cookstoves.blocks.mortar.StoneMortarBlock
 import cc.mycraft.mythic_cookstoves.blocks.pestle.OakPestleBlock
 import cc.mycraft.mythic_cookstoves.blocks.plant.ChiliBlock
@@ -13,6 +14,8 @@ import thedarkcolour.kotlinforforge.forge.registerObject
 
 object ModBlocks {
     val REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, MythicCookstoves.MOD_ID)
+
+    val FURNITURE by REGISTRY.registerObject("furniture") { FurnitureBlock() }
 
     val MYTHIC_TINDER by REGISTRY.registerObject("mythic_tinder") { MythicTinderBlock() }
     val COOKSTOVE by REGISTRY.registerObject("cookstove") { CookstoveBlock() }

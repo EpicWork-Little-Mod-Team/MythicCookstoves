@@ -2,6 +2,7 @@ package cc.mycraft.mythic_cookstoves
 
 import cc.mycraft.mythic_cookstoves.block_entities.ModBlockEntities
 import cc.mycraft.mythic_cookstoves.block_entities.renderer.BonfireRenderer
+import cc.mycraft.mythic_cookstoves.block_entities.renderer.FurnitureRenderer
 import cc.mycraft.mythic_cookstoves.block_entities.renderer.MortarRenderer
 import cc.mycraft.mythic_cookstoves.block_entities.renderer.MythicTinderRenderer
 import cc.mycraft.mythic_cookstoves.blocks.BonfireBlock
@@ -73,6 +74,8 @@ object MythicCookstoves {
     }
 
     private fun onRendererRegister(event: EntityRenderersEvent.RegisterRenderers) {
+        event.registerBlockEntityRenderer(ModBlockEntities.FURNITURE, ::FurnitureRenderer)
+
         event.registerBlockEntityRenderer(ModBlockEntities.MYTHIC_TINDER, ::MythicTinderRenderer)
         event.registerBlockEntityRenderer(ModBlockEntities.MORTAR, ::MortarRenderer)
         event.registerBlockEntityRenderer(ModBlockEntities.BONFIRE, ::BonfireRenderer)
