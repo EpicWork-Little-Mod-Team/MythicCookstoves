@@ -71,6 +71,12 @@ object MythicCookstoves {
                 ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/${registryName.path}_lit"))
             }
         }
+
+        ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/furniture/hj"))
+        ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/furniture/hhlxj"))
+        ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/furniture/qcqpsfsy"))
+        ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/furniture/cfz"))
+        ForgeModelBakery.addSpecialModel(ResourceLocation(MOD_ID, "block/furniture/lqy"))
     }
 
     private fun onRendererRegister(event: EntityRenderersEvent.RegisterRenderers) {

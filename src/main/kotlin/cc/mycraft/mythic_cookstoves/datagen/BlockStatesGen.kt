@@ -23,6 +23,12 @@ class BlockStatesGen(gen: DataGenerator, modid: String, exFileHelper: ExistingFi
     BlockStateProvider(gen, modid, exFileHelper) {
     override fun registerStatesAndModels() {
         // models
+        getObjBlockModel("furniture/hj")
+        getObjBlockModel("furniture/hhlxj")
+        getObjBlockModel("furniture/qcqpsfsy")
+        getObjBlockModel("furniture/cfz")
+        getObjBlockModel("furniture/lqy")
+
         mythicFireModel(ModBlocks.MYTHIC_TINDER, modLoc("block/mythic_fire"))
         val mythicFireParticleModel = getParticleBlockModel(ModBlocks.MYTHIC_TINDER)
         val cookstoveModel = getObjBlockModelFromBooleanProperty(ModBlocks.COOKSTOVE, CookstoveBlock.LIT)
