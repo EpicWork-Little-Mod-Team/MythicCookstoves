@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mythic_cookstoves:block/chili_age2",
+    "texture0": "mythic_cookstoves:block/chili_age2"
+  },
+  "loader": "forge:obj",
+  "model": "mythic_cookstoves:models/block/chili_age2.obj",
+  "flip-v": true
+}

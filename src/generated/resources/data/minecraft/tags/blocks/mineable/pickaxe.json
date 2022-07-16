@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "mythic_cookstoves:cookstove",
+    "mythic_cookstoves:shallow_pan",
+    "mythic_cookstoves:saucepan",
+    "mythic_cookstoves:stone_mortar"
+  ]
+}

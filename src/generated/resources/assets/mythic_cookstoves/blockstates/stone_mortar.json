@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mythic_cookstoves:block/stone_mortar"
+    },
+    "facing=south": {
+      "model": "mythic_cookstoves:block/stone_mortar",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mythic_cookstoves:block/stone_mortar",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "mythic_cookstoves:block/stone_mortar",
+      "y": 90
+    }
+  }
+}

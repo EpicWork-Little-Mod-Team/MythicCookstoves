@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mythic_cookstoves:block/shallow_pan",
+    "texture0": "mythic_cookstoves:block/shallow_pan"
+  },
+  "loader": "forge:obj",
+  "model": "mythic_cookstoves:models/block/shallow_pan.obj",
+  "flip-v": true
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mythic_cookstoves:block/cookstove_lit",
+    "texture0": "mythic_cookstoves:block/cookstove_lit"
+  },
+  "loader": "forge:obj",
+  "model": "mythic_cookstoves:models/block/cookstove_lit.obj",
+  "flip-v": true
+}

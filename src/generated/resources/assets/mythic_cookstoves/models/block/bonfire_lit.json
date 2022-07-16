@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mythic_cookstoves:block/bonfire_lit",
+    "texture0": "mythic_cookstoves:block/bonfire_lit",
+    "texture1": "mythic_cookstoves:block/mythic_fire"
+  },
+  "loader": "forge:obj",
+  "model": "mythic_cookstoves:models/block/bonfire_lit.obj",
+  "flip-v": true
+}

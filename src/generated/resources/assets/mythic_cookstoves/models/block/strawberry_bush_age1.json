@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mythic_cookstoves:block/strawberry_bush_age1",
+    "texture0": "mythic_cookstoves:block/strawberry_bush_age1"
+  },
+  "loader": "forge:obj",
+  "model": "mythic_cookstoves:models/block/strawberry_bush_age1.obj",
+  "flip-v": true
+}

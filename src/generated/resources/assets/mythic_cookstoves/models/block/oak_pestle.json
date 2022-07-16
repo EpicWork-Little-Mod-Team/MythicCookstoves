@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "minecraft:block/oak_log",
+    "texture0": "minecraft:block/oak_log"
+  },
+  "loader": "forge:obj",
+  "model": "mythic_cookstoves:models/block/pestle.obj",
+  "flip-v": true
+}
