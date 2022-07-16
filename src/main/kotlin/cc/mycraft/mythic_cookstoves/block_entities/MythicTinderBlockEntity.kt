@@ -2,16 +2,12 @@ package cc.mycraft.mythic_cookstoves.block_entities
 
 import net.minecraft.core.BlockPos
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket
-import net.minecraft.util.Mth
-import net.minecraft.world.entity.EntitySelector
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.levelgen.Heightmap
 import net.minecraft.world.phys.Vec3
-import java.lang.Math.pow
-import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.pow
 

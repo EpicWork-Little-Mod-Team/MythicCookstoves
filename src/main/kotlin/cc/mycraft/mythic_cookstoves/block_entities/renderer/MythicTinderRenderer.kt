@@ -15,7 +15,8 @@ import net.minecraftforge.client.model.renderable.BakedRenderable
 import kotlin.math.cos
 import kotlin.math.sin
 
-class MythicTinderRenderer(pContext: BlockEntityRendererProvider.Context) : BlockEntityRenderer<MythicTinderBlockEntity> {
+class MythicTinderRenderer(pContext: BlockEntityRendererProvider.Context) :
+    BlockEntityRenderer<MythicTinderBlockEntity> {
     private var model: BakedRenderable? = null
 
     private fun getModel(block: Block): BakedRenderable {
