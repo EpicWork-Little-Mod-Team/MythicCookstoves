@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mythic_cookstoves:block/saucepan",
+    "texture0": "mythic_cookstoves:block/saucepan"
+  },
+  "loader": "forge:obj",
+  "model": "mythic_cookstoves:models/block/saucepan.obj",
+  "flip-v": true
+}

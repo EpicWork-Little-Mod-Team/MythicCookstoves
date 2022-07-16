@@ -1,6 +1,7 @@
 package cc.mycraft.mythic_cookstoves.datagen
 
 import cc.mycraft.mythic_cookstoves.MythicCookstoves
+import cc.mycraft.mythic_cookstoves.items.ISeparateModel
 import cc.mycraft.mythic_cookstoves.items.ModItems
 import net.minecraft.data.DataGenerator
 import net.minecraft.world.item.BlockItem
@@ -18,14 +19,13 @@ class ItemModelsGen(pGenerator: DataGenerator, modId: String, existingFileHelper
         val items =
             ForgeRegistries.ITEMS.values.filter { it.registryName?.namespace == MythicCookstoves.MOD_ID }.toMutableSet()
         // skip item
-        items.remove(ModItems.MYTHIC_TINDER)
         items.remove(ModItems.BONFIRE)
         items.remove(ModItems.SHALLOW_PAN)
         items.remove(ModItems.SAUCEPAN)
         // generate
         items.forEach {
             val name = checkNotNull(it.registryName?.path)
-            if (it is BlockItem && it !is ItemNameBlockItem) {
+            if (it is BlockItem && it !is ItemNameBlockItem && it !is ISeparateModel) {
                 withExistingParent(name, modLoc("$BLOCK_FOLDER/" + checkNotNull(it.block.registryName).path))
             } else {
                 withExistingParent(name, GENERATED).texture("layer0", modLoc("$ITEM_FOLDER/$name"))

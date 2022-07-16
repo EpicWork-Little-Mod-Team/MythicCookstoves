@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mythic_cookstoves:block/mythic_tinder",
+    "texture0": "mythic_cookstoves:block/mythic_tinder",
+    "texture1": "mythic_cookstoves:block/mythic_fire"
+  },
+  "loader": "forge:obj",
+  "model": "mythic_cookstoves:models/block/mythic_tinder.obj",
+  "flip-v": true
+}
