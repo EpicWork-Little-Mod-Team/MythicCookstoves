@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mythic_cookstoves:block/furniture/cfz",
+    "texture0": "mythic_cookstoves:block/furniture/cfz"
+  },
+  "loader": "forge:obj",
+  "model": "mythic_cookstoves:models/block/furniture/cfz.obj",
+  "flip-v": true
+}
